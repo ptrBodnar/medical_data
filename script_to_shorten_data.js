@@ -4,9 +4,10 @@ var d3 = require('d3');
 var args = process.argv.slice(2);
 
 var arg = args[0]
+var path = args[1]
 
 
-let rawdata = fs.readFileSync('../prototype/medical_reform/src/assets/payments_to_doctors.json');
+let rawdata = fs.readFileSync(path);
 
 let data = JSON.parse(rawdata)
 
