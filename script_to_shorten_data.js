@@ -4,9 +4,10 @@ var d3 = require('d3');
 var args = process.argv.slice(2);
 
 var arg = args[0]
+var path = args[1]
 
 
-let rawdata = fs.readFileSync('med/src/assets/payments_to_doctors.json');
+let rawdata = fs.readFileSync(path);
 
 let data = JSON.parse(rawdata)
 
@@ -22,7 +23,8 @@ let x = d3
 let bins = d3
         .histogram()
         .domain(x.domain())
-        .thresholds(x.ticks(40))(data.map(function(d){return +d.decl_count}));
+        .thresholds(x.ticks(40))(data.map(function(d){return +d[arg]}));
+
 
 
 let binsNew = bins.map(function(d) {
